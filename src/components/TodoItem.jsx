@@ -1,21 +1,13 @@
 import React, { useState } from 'react'
 import './TodoItem.css'
-import Counter from './Counter'
-
-const toInputDate = (time) => {
-    const d = new Date(time)
-    const mm = String(d.getMonth() + 1).padStart(2, '0')
-    const dd = String(d.getDate()).padStart(2, '0')
-
-    return `${d.getFullYear()}-${mm}-${dd} `
-}
 
 
-const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
+
+const TodoItem = ({ id, isDone, content, number, onUpdate, onDelete }) => {
 
     const [isEdit, setIsEdit] = useState(false)
     const [editContent, setEditContent] = useState(content)
-    const [editDate, setEditDate] = useState(toInputDate(date))
+    const [editcount, setEditCount] = useState(0)
 
     const onChangeCheck = () => onUpdate(id, { isDone: !isDone })
 
@@ -25,7 +17,7 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
 
             onUpdate(id, {
                 content: editContent,
-
+                number: {editcount}
             })
         }
         setIsEdit(!isEdit)
@@ -41,18 +33,24 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
 
             {isEdit ? (
                 <>
-                    <input 
+                    <input
                         type="text"
                         className='content'
                         onChange={(e) => setEditContent(e.target.value)}
                         value={editContent} />
+                    <input
+                        type="number"
+                        className='number'
+                        value={editcount}
+                        onChange={(e) => setEditCount(e.target.value)}
+                    />
 
                 </>
 
             ) : (
                 <>
                     <div className="content">{content}</div>
-                    <div className="date"><Counter/></div>
+                    <div className="date">0</div>
                 </>
             )}
 

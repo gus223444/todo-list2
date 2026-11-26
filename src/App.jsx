@@ -9,19 +9,19 @@ const mockData = [
     id: 0,
     isDone: false,
     content: "React 공부하기",
-    date: 0
+    Number:{count}
   },
   {
     id: 1,
     isDone: false,
     content: "운동하기",
-    date: 0
+    Number:{count}
   },
   {
     id: 2,
     isDone: false,
     content: "여행가기",
-    date: 1230
+    Number:{count}
   }
 ]
 
@@ -36,7 +36,7 @@ function App() {
       id: idRef.current++,
       isDone: false,
       content: content,
-      date: 0
+      date: new Date().getTime()
     }
 
     setTodos([newTodo, ...todos])

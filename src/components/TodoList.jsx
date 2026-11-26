@@ -23,7 +23,7 @@ const TodoList = ({ todos, onUpdate, onDelete }) => {
     const filteredTodos = filteredData()
     return (
         <div className='TodoList'>
-            <h4>Todo List </h4>
+            <h4>장보기 리스트 </h4>
             <input type="text"
                 value={search}
                 onChange={onChangeSearch}
